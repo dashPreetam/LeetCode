@@ -1,4 +1,4 @@
-package XOfAInADeckOfCards_914;
+package XOfAKindInADeckOfCards_914;
 /*
 
  * Date : 18/07/21
