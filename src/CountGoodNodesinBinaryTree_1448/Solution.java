@@ -7,40 +7,25 @@ package CountGoodNodesinBinaryTree_1448;
 
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Solution {
     private int count;
     public int goodNodes(TreeNode root) {
         count = 0;
-        List<Integer> valuesInPath = new ArrayList<>();
-        helper(root, valuesInPath);
+        helper(root, Integer.MIN_VALUE);
         return count;
     }
 
-    public void helper(TreeNode root, List<Integer> valuesInPath){
+    public void helper(TreeNode root, int greatestInPath){
         if(root == null)
             return;
 
-        if(hasNoGreater(root.val,valuesInPath)){
+        if(root.val > greatestInPath){
             count++;
+            greatestInPath = root.val;;
         }
 
-        List<Integer> newValues = new ArrayList<>(valuesInPath);
-        newValues.add(root.val);
-        helper(root.left,newValues);
-        helper(root.right,newValues);
+        helper(root.left,greatestInPath);
+        helper(root.right,greatestInPath);
 
-    }
-
-    private boolean hasNoGreater(int val, List<Integer> valuesInPath) {
-
-        for (int x : valuesInPath) {
-            if (x > val)
-                return false;
-        }
-
-        return true;
     }
 }
