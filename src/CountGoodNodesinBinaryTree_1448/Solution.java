@@ -19,7 +19,7 @@ public class Solution {
         if(root == null)
             return;
 
-        if(root.val > greatestInPath){
+        if(root.val >= greatestInPath){
             count++;
             greatestInPath = root.val;;
         }
